@@ -885,6 +885,7 @@ oldElem=document.getElementsByTagName("link")[0];
 		<li><a href="#uitoggleside">.toggleSideMenu(); </a></li>
 		<li><a href="#uitogglenav">.toggleNavMenu(); </a></li>
         <li><a href="#uiactionsheet">.actionsheet() </a></li>
+        <li><a href="#uispinner">.spinner() </a></li>
         
 		<li><a href="#uiscrolltotop">.scrollToTop() </a></li>
 
@@ -1066,6 +1067,17 @@ oldElem=document.getElementsByTagName("link")[0];
 	<a href="javascript:;" onclick="$.ui.actionsheet('<a href=\'javascript:;\' class=\'button\'>Test</a>')" class="button">Show a custom sheet</a>
 	<br/><br/>
 	</div>
+
+    <div id="uispinner" title="Spinner" class="panel" data-footer='footerui'>
+	 This is a shortcut to the spinner plugin.  This will wire it correctly to jQUi div
+	<pre>
+	$.ui.spinner()
+	</pre>
+	<br><br>
+	
+	<a href="javascript:;" onclick="$.ui.spinner('<a href=\'javascript:;\' class=\'button\'>Test</a>')" class="button">Show a custom sheet</a>
+	<br/><br/>
+	</div>
 	
 	<div id="uiscrolltotop" title="Scroll to Top" class="panel" data-footer='footerui'>
 	This allows you to scroll to the top of a page.  Scroll to the bottom for the link.
@@ -1111,6 +1123,7 @@ oldElem=document.getElementsByTagName("link")[0];
 		<li><a href="#webdrawer" >jq.drawer</a></li>
         <li><a href="#webalphatable" >jq.alphatable</a></li>
 		<li><a href="#webactionsheet" >jq.actionsheet</a></li>
+		<li><a href="#webspinner" >jq.spinner</a></li>
         <li><a href="#webpopup" >jq.popup</a></li>
 		</ul>
 		<br/><br/>
@@ -1792,6 +1805,37 @@ oldElem=document.getElementsByTagName("link")[0];
             }
 		</script>
 		This creates a slide in action sheet from the bottom.<br /><br />
+		<a class="button" href="javascript:;" onClick="showCustomHtmlSpinner()">Show Custom Html Spinner</a>
+		<a class="button" href="javascript:;" onClick="showCustomJsonSpinner()">Show Custom Json Spinner</a>
+        
+	</div>
+
+    <!-- jqPlugins > jqSpinner -->
+    <div title="Spinner" class="panel" id="webspinner">
+
+		<script>
+		    function showCustomHtmlSpinner() {
+		        $("#jQUi").spinner('<a href="javascript:;" >Back</a><a href="javascript:;" onclick="alert(\'hi\');" >Show Alert 3</a><a href="javascript:;" onclick="alert(\'goodbye\');">Show Alert 4</a>');
+		    }
+		    function showCustomJsonSpinner() {
+		        $("#jQUi").spinner(
+                    [{
+                        text: 'back',
+                        cssClasses: 'red',
+                        handler: function () { $.ui.goBack();; }
+                    }, {
+                        text: 'show alert 5',
+                        cssClasses: 'blue',
+                        handler: function () { alert("hi"); }
+                    }, {
+                        text: 'show alert 6',
+                        cssClasses: '',
+                        handler: function () { alert("goodbye"); }
+                    }]
+                );
+		    }
+		</script>
+		This creates a slide in spinner from the bottom.<br /><br />
 		<a class="button" href="javascript:;" onClick="showCustomHtmlSheet()">Show Custom Html Sheet</a>
 		<a class="button" href="javascript:;" onClick="showCustomJsonSheet()">Show Custom Json Sheet</a>
         
