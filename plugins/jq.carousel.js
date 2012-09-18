@@ -26,7 +26,7 @@
         var translateOpen = 'm11' in new WebKitCSSMatrix() ? "3d(" : "(";
         var translateClose = 'm11' in new WebKitCSSMatrix() ? ",0)" : ")";
         
-        var carousel = function(containerEl, opts) {
+        var carousel = function (containerEl, opts) {
             if (typeof containerEl === "string" || containerEl instanceof String) {
                 this.container = document.getElementById(containerEl);
             } else {

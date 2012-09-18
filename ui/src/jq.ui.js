@@ -152,6 +152,33 @@
             return el.actionsheet(opts);
         },
         /**
+         * This is a shorthand call to the jq.actionsheet plugin.  We wire it to the jQUi div automatically
+           ```
+           $.ui.actionsheet("<a href='javascript:;' class='button'>Settings</a> <a href='javascript:;' class='button red'>Logout</a>")
+           $.ui.actionsheet("[{
+                        text: 'back',
+                        cssClasses: 'red',
+                        handler: function () { $.ui.goBack(); ; }
+                    }, {
+                        text: 'show alert 5',
+                        cssClasses: 'blue',
+                        handler: function () { alert("hi"); }
+                    }, {
+                        text: 'show alert 6',
+                        cssClasses: '',
+                        handler: function () { alert("goodbye"); }
+                    }]");
+           ```
+         * @param {String,Array} links
+         * @title $.ui.actionsheet()
+         */
+        spinner: function (opts) {
+            el = jq("#jQUi");
+            if (!el.__proto__["spinner"])
+                throw "spinner plugin is required";
+            return el.spinner(opts);
+        },
+        /**
          * This is a wrapper to jq.popup.js plugin.  If you pass in a text string, it acts like an alert box and just gives a message
            ```
            $.ui.popup(opts);

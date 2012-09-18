@@ -36,6 +36,7 @@
             }
             
             try {
+                debugger;
                 var that = this;
                 var markStart = '</div><div id="jq_actionsheet"><div style="width:100%">';
                 var markEnd = '</div></div>';

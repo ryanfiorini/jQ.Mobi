@@ -101,6 +101,7 @@ oldElem=document.getElementsByTagName("link")[0];
 <script type="text/javascript" charset="utf-8" src="./plugins/jq.drawer.js"></script> 
 <script type="text/javascript" charset="utf-8" src="./plugins/jq.shake.js"></script> 
 <script type="text/javascript" charset="utf-8" src="./plugins/jq.alphatable.js"></script> 
+<script type="text/javascript" charset="utf-8" src="./plugins/jq.spinner.js"></script> 
 <script type="text/javascript" charset="utf-8" src="./ui/jq.ui.js"></script> 
 
 <script type="text/javascript">
@@ -1075,7 +1076,7 @@ oldElem=document.getElementsByTagName("link")[0];
 	</pre>
 	<br><br>
 	
-	<a href="javascript:;" onclick="$.ui.spinner('<a href=\'javascript:;\' class=\'button\'>Test</a>')" class="button">Show a custom sheet</a>
+	<a href="javascript:;" onclick="$.spinner('<a href=\'javascript:;\' class=\'button\'>Test</a>')" class="button">Show a custom sheet</a>
 	<br/><br/>
 	</div>
 	
@@ -1805,8 +1806,8 @@ oldElem=document.getElementsByTagName("link")[0];
             }
 		</script>
 		This creates a slide in action sheet from the bottom.<br /><br />
-		<a class="button" href="javascript:;" onClick="showCustomHtmlSpinner()">Show Custom Html Spinner</a>
-		<a class="button" href="javascript:;" onClick="showCustomJsonSpinner()">Show Custom Json Spinner</a>
+		<a class="button" href="javascript:;" onClick="showCustomHtmlSheet()">Show Custom Html Action sheet</a>
+		<a class="button" href="javascript:;" onClick="showCustomJsonSheet()">Show Custom Json Action sheet</a>
         
 	</div>
 
@@ -1814,33 +1815,39 @@ oldElem=document.getElementsByTagName("link")[0];
     <div title="Spinner" class="panel" id="webspinner">
 
 		<script>
-		    function showCustomHtmlSpinner() {
-		        $("#jQUi").spinner('<a href="javascript:;" >Back</a><a href="javascript:;" onclick="alert(\'hi\');" >Show Alert 3</a><a href="javascript:;" onclick="alert(\'goodbye\');">Show Alert 4</a>');
+		    function cancelHandler() {
+		        alert('cancel');
+		    }
+		    function doneHandler() {
+		        alert('done');
 		    }
 		    function showCustomJsonSpinner() {
-		        $("#jQUi").spinner(
-                    [{
-                        text: 'back',
-                        cssClasses: 'red',
-                        handler: function () { $.ui.goBack();; }
-                    }, {
-                        text: 'show alert 5',
-                        cssClasses: 'blue',
-                        handler: function () { alert("hi"); }
-                    }, {
-                        text: 'show alert 6',
-                        cssClasses: '',
-                        handler: function () { alert("goodbye"); }
-                    }]
+		        $("#spinner").spinner(
+                    {
+                        wheels: [{
+                            wheel: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+                            cssClasses: 'red',
+                            handler: function () {}
+                        }, {
+                            wheel: [0, 10, 20, 30, 40, 50, 60, 70, 80, 90],
+                            cssClasses: 'blue',
+                            handler: function () {}
+                        }, {
+                            wheel: ['Jan', 'Feb', 'Mar', 'Apr', 'May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                            cssClasses: 'blue',
+                            handler: function () { }
+                        }],
+                        cancel: cancelHandler,
+                        done: doneHandler
+                    }
                 );
 		    }
 		</script>
 		This creates a slide in spinner from the bottom.<br /><br />
-		<a class="button" href="javascript:;" onClick="showCustomHtmlSheet()">Show Custom Html Sheet</a>
-		<a class="button" href="javascript:;" onClick="showCustomJsonSheet()">Show Custom Json Sheet</a>
+		<a class="button" href="javascript:;" onClick="showCustomJsonSpinner()">Show Custom Json Sheet</a>
         
 	</div>
-    
+    <div id="spinner"></div>
     
      <div title="Popup" class="panel" id="webpopup">
         
